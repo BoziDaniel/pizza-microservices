@@ -1,5 +1,7 @@
 package com.codecool.userservice;
 
+import com.codecool.userservice.init.DbInitializer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,11 +30,15 @@ public class UserServiceApplication {
 				.paths(PathSelectors.any())
 				.build();
 	}
+
+	@Autowired
+	private DbInitializer dbInitializer;
+
 	@Bean
 	@Profile("dev")
 	public CommandLineRunner init() {
 		return args -> {
-
+			dbInitializer.intializeDatabase();
 		};
 	}
 }
