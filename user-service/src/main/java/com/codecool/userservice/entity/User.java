@@ -22,7 +22,7 @@ public class User {
     @Column(nullable = false, unique = true)
     private String username;
 
-    @JsonIgnore
+//    @JsonIgnore
     private String password;
 
     @Enumerated(EnumType.STRING)

@@ -38,4 +38,11 @@ public class UserController {
         log.info(String.format("request processed /user?username=%s found user: %s", username, user.toString()));
         return user;
     }
+
+    @PostMapping
+    public void addUser(@RequestBody User user) {
+        log.info(String.format("request arrived at /user with request body: %s", user.toString()));
+        userRepository.save(user);
+        log.info(String.format("request processed at /user with request body: %s", user.toString()));
+    }
 }
