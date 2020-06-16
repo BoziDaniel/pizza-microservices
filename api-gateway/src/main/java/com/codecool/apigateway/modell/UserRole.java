@@ -1,6 +1,5 @@
-package com.codecool.userservice.modell;
+package com.codecool.apigateway.modell;
 
-import lombok.Data;
 
 
 public enum UserRole {

@@ -71,7 +71,7 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>LATEST</version>
 		</dependency>
-	</dependencies>
+    </dependencies>
 
 	<dependencyManagement>
 		<dependencies>
