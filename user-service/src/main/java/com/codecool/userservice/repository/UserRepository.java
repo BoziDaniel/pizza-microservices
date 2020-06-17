@@ -13,6 +13,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value = "SELECT ROLE FROM USER WHERE ID=?1", nativeQuery = true)
     UserRole getUserRoleByUserId(Long userId);
 
-    UserCredentials getUserByUsername(String userName);
+    User getUserByUsername(String userName);
 
 }

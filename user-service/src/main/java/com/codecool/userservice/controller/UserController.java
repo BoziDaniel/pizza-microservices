@@ -35,7 +35,8 @@ public class UserController {
     @GetMapping
     public UserCredentials getUserCredentialsByUsername(@RequestParam("username") String username) {
         log.info(String.format("request arrived at /user?username=%s", username));
-        UserCredentials userCredentials = userRepository.getUserByUsername(username);
+        User user = userRepository.getUserByUsername(username);
+        UserCredentials userCredentials = new UserCredentials(user.getUsername(), user.getPassword(), user.getRoles());
         log.info(String.format("request processed /user?username=%s found user: %s", username, userCredentials.toString()));
         return userCredentials;
     }

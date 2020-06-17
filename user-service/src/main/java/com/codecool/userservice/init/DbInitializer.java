@@ -3,46 +3,53 @@ package com.codecool.userservice.init;
 import com.codecool.userservice.entity.User;
 import com.codecool.userservice.modell.UserRole;
 import com.codecool.userservice.repository.UserRepository;
+import com.codecool.userservice.service.AuthServiceCaller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DbInitializer {
-//    private final PasswordEncoder passwordEncoder;
-//
-//    @Autowired
-//    public DbInitializer(PasswordEncoder passwordEncoder) {
-//        this.passwordEncoder = passwordEncoder;
-//    }
+
+private final PasswordEncoder passwordEncoder= PasswordEncoderFactories.createDelegatingPasswordEncoder();
+
+    @Autowired
+    private AuthServiceCaller authServiceCaller;
 
     @Autowired
     private UserRepository userRepository;
     public void intializeDatabase() {
         User customer = User.builder()
                 .username("customer")
-                .password("a")
+                .password(passwordEncoder.encode("sas"))
                 .role(UserRole.CUSTOMER)
                 .build();
         userRepository.save(customer);
         User cook = User.builder()
                 .username("cook")
-                .password("a")
+                .password(passwordEncoder.encode("sas"))
                 .role(UserRole.COOK)
                 .build();
         userRepository.save(cook);
         User manager = User.builder()
                 .username("manager")
-                .password("a")
+                .password(passwordEncoder.encode("sas"))
                 .role(UserRole.MANAGER)
                 .build();
         userRepository.save(manager);
         User deliveryGuy = User.builder()
                 .username("deliveryGuy")
-                .password("a")
+                .password(passwordEncoder.encode("sas"))
                 .role(UserRole.DELIVERYGUY)
                 .build();
         userRepository.save(deliveryGuy);
+        User test = User.builder()
+                .username("test")
+                .password(passwordEncoder.encode("pass"))
+                .role(UserRole.DELIVERYGUY)
+                .build();
+        userRepository.save(test);
 
 
     }

@@ -4,13 +4,9 @@ import com.codecool.apigateway.modell.UserCredentials;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Arrays;
-import java.util.List;
 
 @Service
 @Slf4j
@@ -25,6 +21,7 @@ public class UserServiceCaller {
     public UserCredentials getUserCredentialByUserName(String username) {
         ResponseEntity<UserCredentials> response = restTemplate.getForEntity(baseUrl+"?username=" + username , UserCredentials.class);
         UserCredentials userCredentials = response.getBody();
+        log.info(userCredentials.toString());
         return userCredentials;
     }
 
