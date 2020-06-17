@@ -14,8 +14,7 @@ public class DbInitializer {
 
 private final PasswordEncoder passwordEncoder= PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
-    @Autowired
-    private AuthServiceCaller authServiceCaller;
+
 
     @Autowired
     private UserRepository userRepository;
@@ -23,31 +22,31 @@ private final PasswordEncoder passwordEncoder= PasswordEncoderFactories.createDe
         User customer = User.builder()
                 .username("customer")
                 .password(passwordEncoder.encode("sas"))
-                .role(UserRole.CUSTOMER)
+                .role(UserRole.ROLE_CUSTOMER)
                 .build();
         userRepository.save(customer);
         User cook = User.builder()
                 .username("cook")
                 .password(passwordEncoder.encode("sas"))
-                .role(UserRole.COOK)
+                .role(UserRole.ROLE_COOK)
                 .build();
         userRepository.save(cook);
         User manager = User.builder()
                 .username("manager")
                 .password(passwordEncoder.encode("sas"))
-                .role(UserRole.MANAGER)
+                .role(UserRole.ROLE_MANAGER)
                 .build();
         userRepository.save(manager);
         User deliveryGuy = User.builder()
                 .username("deliveryGuy")
                 .password(passwordEncoder.encode("sas"))
-                .role(UserRole.DELIVERYGUY)
+                .role(UserRole.ROLE_DELIVERYGUY)
                 .build();
         userRepository.save(deliveryGuy);
         User test = User.builder()
                 .username("test")
                 .password(passwordEncoder.encode("pass"))
-                .role(UserRole.DELIVERYGUY)
+                .role(UserRole.ROLE_DELIVERYGUY)
                 .build();
         userRepository.save(test);
 

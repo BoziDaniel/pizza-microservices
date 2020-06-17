@@ -1,13 +1,13 @@
 package com.codecool.userservice.modell;
 
-import lombok.Data;
+
 
 
 public enum UserRole {
-    COOK("COOK"),
-    CUSTOMER("CUSTOMER"),
-    MANAGER("MANAGER"),
-    DELIVERYGUY("DELIVERYGUY");
+    ROLE_COOK("ROLE_COOK"),
+    ROLE_CUSTOMER("ROLE_CUSTOMER"),
+    ROLE_MANAGER("ROLE_MANAGER"),
+    ROLE_DELIVERYGUY("ROLE_DELIVERYGUY");
 
     private String role;
 

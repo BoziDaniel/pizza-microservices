@@ -5,7 +5,7 @@ package com.codecool.apigateway.modell;
 public enum UserRole {
     COOK("COOK"),
     CUSTOMER("CUSTOMER"),
-    MANAGER("MANAGER"),
+    ROLE_MANAGER("ROLE_MANAGER"),
     DELIVERYGUY("DELIVERYGUY");
 
     private String role;

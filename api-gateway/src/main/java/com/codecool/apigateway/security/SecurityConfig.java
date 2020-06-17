@@ -1,5 +1,6 @@
 package com.codecool.apigateway.security;
 
+import com.codecool.apigateway.modell.UserRole;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -34,17 +35,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 //az egyiket ki kell szedni, meg kell nézni melyik a jó
+                .antMatchers(HttpMethod.POST,"/user").hasRole("MANAGER")
                 .antMatchers(HttpMethod.GET, "/user/**").authenticated()
                 .antMatchers(HttpMethod.GET, "/userservice/user/**").authenticated()
 
-                .antMatchers(HttpMethod.GET, "/pizzas/**").hasRole("CUSTOMER")// allowed by anyone
+                .antMatchers(HttpMethod.GET, "/pizzas/**").hasRole("CUSTOMER")
                 .antMatchers(HttpMethod.GET, "/order/active/**").authenticated()
 //                .antMatchers(HttpMethod.POST, "/order/")
 //                .anyRequest().denyAll()
                 .antMatchers("/" , "/pizzas/*", "index", "/css/", "/js/*").permitAll()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
-                .antMatchers(HttpMethod.GET, "/login").permitAll()
-
                 .and()
                 .addFilterBefore(new JwtTokenFilter(jwtTokenServices), UsernamePasswordAuthenticationFilter.class);
 
