@@ -21,8 +21,8 @@ import java.util.List;
 @Slf4j
 public class JwtTokenServices {
 
-    @Value("${security.jwt.token.secret-key:secret}")
-    private String secretKey = "secret";
+//    @Value("${security.jwt.token.secret-key:secret}")
+    private String secretKey = "securesecuresecuresecuresecuresecuresecuresecuresecuresecuresecuresecuresecuresecuresecurevalami";
 
     @Value("${security.jwt.token.expire-length:3600000}")
     private long validityInMilliseconds = 36000000; // 10h
@@ -86,5 +86,11 @@ public class JwtTokenServices {
             authorities.add(new SimpleGrantedAuthority(role));
         }
         return new UsernamePasswordAuthenticationToken(username, "", authorities);
+    }
+
+    public String getUsernameFromJwtToken(String token) {
+        Claims body = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+        String username = body.getSubject();
+        return username;
     }
 }

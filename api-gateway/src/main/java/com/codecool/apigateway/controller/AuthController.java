@@ -2,6 +2,8 @@ package com.codecool.apigateway.controller;
 
 import com.codecool.apigateway.modell.UserCredentials;
 import com.codecool.apigateway.security.JwtTokenServices;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -63,8 +65,13 @@ public class AuthController {
         }
     }
 
-//    @GetMapping("/encode")
-//    public String encode(@RequestParam String password) {
-//        return passwordEncoder.encode(password);
+//    @GetMapping("/{token}")
+//    public String getUsernameFromToken(@PathVariable("token") String token) {
+//        log.info("request arrived to /token");
+//        return jwtTokenServices.getUsernameFromJwtToken(token);
 //    }
+
 }
+
+
+
