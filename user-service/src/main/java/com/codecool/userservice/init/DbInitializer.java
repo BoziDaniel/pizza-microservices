@@ -11,8 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class DbInitializer {
 
-private final PasswordEncoder passwordEncoder= PasswordEncoderFactories.createDelegatingPasswordEncoder();
-
+    private final PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
 
     @Autowired
@@ -43,12 +42,6 @@ private final PasswordEncoder passwordEncoder= PasswordEncoderFactories.createDe
                 .role(UserRole.ROLE_DELIVERYGUY)
                 .build();
         userRepository.save(deliveryGuy);
-        User test = User.builder()
-                .username("test")
-                .password(passwordEncoder.encode("pass"))
-                .role(UserRole.ROLE_DELIVERYGUY)
-                .build();
-        userRepository.save(test);
 
 
     }

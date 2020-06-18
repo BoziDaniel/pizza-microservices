@@ -2,7 +2,6 @@ package com.codecool.userservice.controller;
 
 import com.codecool.userservice.entity.User;
 import com.codecool.userservice.modell.UserCredentials;
-import com.codecool.userservice.entity.UserRole;
 import com.codecool.userservice.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -14,7 +14,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final JwtTokenServices jwtTokenServices;
 
-    //    @PreAuthorize() megnéz
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -33,18 +32,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
+
                 .authorizeRequests()
-                //az egyiket ki kell szedni, meg kell nézni melyik a jó
+                .antMatchers(HttpMethod.POST, "/login").permitAll()
                 .antMatchers(HttpMethod.POST,"/user").hasRole("MANAGER")
+                .antMatchers(HttpMethod.GET, "/pizzaservice/pizzas/**").hasRole("CUSTOMER")// ez a jó forma
                 .antMatchers(HttpMethod.GET, "/user/**").authenticated()
                 .antMatchers(HttpMethod.GET, "/userservice/user/**").authenticated()
-
-                .antMatchers(HttpMethod.GET, "/pizzas/**").hasRole("CUSTOMER")
                 .antMatchers(HttpMethod.GET, "/order/active/**").authenticated()
 //                .antMatchers(HttpMethod.POST, "/order/")
 //                .anyRequest().denyAll()
-                .antMatchers("/" , "/pizzas/*", "index", "/css/", "/js/*").permitAll()
-                .antMatchers(HttpMethod.POST, "/login").permitAll()
+                .antMatchers("/" , "index", "/css/", "/js/*").permitAll()
                 .and()
                 .addFilterBefore(new JwtTokenFilter(jwtTokenServices), UsernamePasswordAuthenticationFilter.class);
 

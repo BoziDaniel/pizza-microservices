@@ -18,11 +18,11 @@ public class CustomZuulFilter extends ZuulFilter {
 
     @Override
     public Object run() {
-        RequestContext ctx = RequestContext.getCurrentContext();
-        HttpServletRequest request = ctx.getRequest();
+        RequestContext context = RequestContext.getCurrentContext();
+        HttpServletRequest request = context.getRequest();
         String token = jwtTokenServices.getTokenFromRequest(request);
         String username = jwtTokenServices.getUsernameFromJwtToken(token);
-        ctx.addZuulRequestHeader("username", username);
+        context.addZuulRequestHeader("username", username);
         return null;
     }
 
