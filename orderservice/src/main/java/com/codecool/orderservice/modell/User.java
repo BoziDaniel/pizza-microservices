@@ -1,29 +1,24 @@
-package com.codecool.userservice.entity;
+package com.codecool.orderservice.modell;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
-import javax.persistence.*;
 import java.util.Set;
 
-@Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-    @GeneratedValue
-    @Id
+
     private Long id;
 
-    @Column(nullable = false, unique = true)
     private String username;
 
-//    @JsonIgnore
+    @JsonIgnore
     private String password;
 
-    @ElementCollection
     @Singular
-    @Enumerated(EnumType.STRING)
     private Set<UserRole> roles;
 
     public User(String username, String password, Set<UserRole> roles) {

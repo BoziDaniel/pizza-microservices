@@ -1,9 +1,8 @@
 package com.codecool.userservice.init;
 
 import com.codecool.userservice.entity.User;
-import com.codecool.userservice.modell.UserRole;
+import com.codecool.userservice.entity.UserRole;
 import com.codecool.userservice.repository.UserRepository;
-import com.codecool.userservice.service.AuthServiceCaller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,6 +17,7 @@ private final PasswordEncoder passwordEncoder= PasswordEncoderFactories.createDe
 
     @Autowired
     private UserRepository userRepository;
+
     public void intializeDatabase() {
         User customer = User.builder()
                 .username("customer")

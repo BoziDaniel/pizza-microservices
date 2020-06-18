@@ -16,13 +16,6 @@ public class AuthServiceCaller {
     @Value("${apigateway.url}")
     private String baseUrl;
 
-//    public String encode(String password) {
-//        ResponseEntity<String> response = restTemplate.getForEntity(baseUrl + "/encode?password=" + password, String.class);
-//        String encodedPassword = response.getBody();
-//        log.info(encodedPassword);
-//        return encodedPassword;
-//
-//    }
 
 
 }

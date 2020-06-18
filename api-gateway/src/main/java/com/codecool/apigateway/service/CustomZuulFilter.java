@@ -1,7 +1,9 @@
 package com.codecool.apigateway.service;
 
+import com.codecool.apigateway.security.JwtTokenServices;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 import org.springframework.stereotype.Component;
 
@@ -11,14 +13,16 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
 
 @Component
 public class CustomZuulFilter extends ZuulFilter {
+    @Autowired
+    private JwtTokenServices jwtTokenServices;
 
     @Override
     public Object run() {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
-
-        ctx.addZuulRequestHeader("Test", "TestSample");
-//        ctx.addOriginResponseHeader("test", "test");
+        String token = jwtTokenServices.getTokenFromRequest(request);
+        String username = jwtTokenServices.getUsernameFromJwtToken(token);
+        ctx.addZuulRequestHeader("username", username);
         return null;
     }
 
@@ -36,5 +40,4 @@ public class CustomZuulFilter extends ZuulFilter {
     public int filterOrder() {
         return 10;
     }
-    // ...
 }

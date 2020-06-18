@@ -1,5 +1,6 @@
 package com.codecool.userservice.modell;
 
+import com.codecool.userservice.entity.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

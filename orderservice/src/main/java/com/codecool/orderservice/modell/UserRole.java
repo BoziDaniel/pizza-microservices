@@ -1,4 +1,4 @@
-package com.codecool.userservice.modell;
+package com.codecool.orderservice.modell;
 
 
 

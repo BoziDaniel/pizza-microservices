@@ -1,5 +1,7 @@
 package com.codecool.orderservice;
 
+import com.codecool.orderservice.init.DbInitializer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -34,11 +36,13 @@ public class OrderserviceApplication {
                 .build();
     }
 
+    @Autowired
+    private DbInitializer dbInitializer;
     @Bean
     @Profile("dev")
     public CommandLineRunner init() {
         return args -> {
-
+            dbInitializer.intializeDatabase();
         };
     }
 }

@@ -2,10 +2,7 @@ package com.codecool.apigateway.controller;
 
 import com.codecool.apigateway.modell.UserCredentials;
 import com.codecool.apigateway.security.JwtTokenServices;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -15,7 +12,9 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.List;
@@ -65,11 +64,7 @@ public class AuthController {
         }
     }
 
-//    @GetMapping("/{token}")
-//    public String getUsernameFromToken(@PathVariable("token") String token) {
-//        log.info("request arrived to /token");
-//        return jwtTokenServices.getUsernameFromJwtToken(token);
-//    }
+
 
 }
 

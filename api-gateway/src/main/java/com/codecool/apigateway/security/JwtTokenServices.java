@@ -50,7 +50,7 @@ public class JwtTokenServices {
                 .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
     }
-    String getTokenFromRequest(HttpServletRequest req) {
+    public String getTokenFromRequest(HttpServletRequest req) {
         String bearerToken = req.getHeader("Authorization");
         if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7, bearerToken.length());
